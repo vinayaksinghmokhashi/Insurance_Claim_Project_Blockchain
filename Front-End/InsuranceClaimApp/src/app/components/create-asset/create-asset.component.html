@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Your Form</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .height-adjustment {
+      max-width: 600px;
+      /* Adjust the max-width as needed */
+      width: 100%;
+    }
+  </style>
+</head>
+
+<div class="viewClaims">
+  <button type="button" class="btn btn-primary" (click)="getAllClaims()" data-toggle="modal" data-target="#exampleModalCenter">
+    Your Claims
+  </button>
+
+  <button type="button" class="btn btn-primary" (click)="logOut()">
+    Log Out
+  </button>
+
+</div>
+
+<body>
+
+
+
+  <div class="p-4 height-adjustment">
+    <div style="text-align: center;">
+      <h1 style="    font-size: 80px;
+      color: aliceblue;
+      margin-bottom: 100px;"  >WELCOME!!</h1>
+      <h1 style="font-size: 40px; color:aliceblue; margin-bottom: 40px"  >Policy Holder</h1>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field class="w-100">
+            <mat-label>Claim Id</mat-label>
+            <input matInput formControlName="claimId" ngDefaultControl>
+          </mat-form-field>
+        </div>
+        <div class="col-12">
+          <mat-form-field class="w-100">
+            <mat-label>Value</mat-label>
+            <input matInput formControlName="value" ngDefaultControl>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="example-button-container" style="text-align: center;">
+        <button mat-fab color="primary" type="submit">
+          <mat-icon>done</mat-icon>
+        </button>
+      </div>
+
+    </form>
+  </div>
+</body>
+
+</html>
+
+
+
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <mat-form-field class="w-100">
+          <input type="text" placeholder="Enter your ClaimId" [(ngModel)]="enteredClaimId" matInput>
+          
+      </mat-form-field> &nbsp; &nbsp;
+
+      <div class="example-button-container" style="text-align: center;">
+        <button mat-fab color="primary" type="submit" (click)="readClaim(enteredClaimId)">
+          <mat-icon>done</mat-icon>
+        </button>
+      </div>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Claim Id</th>
+              <th>Value</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of readClaimData">
+              <td>{{ enteredClaimId }}</td>
+              <td>{{ data.data.value }}</td>
+              <td>{{ data.data.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="text-center">No claims available</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+

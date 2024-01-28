@@ -1,0 +1,268 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Your Form</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .height-adjustment {
+      max-width: 600px;
+      width: 100%;
+      height: 70vh;
+    }
+  </style>
+</head>
+<body>
+
+
+  <div class="p-4 height-adjustment">
+    <div style="text-align: center;">  
+        <h1>Insurer</h1>
+    </div>
+
+
+    <mat-form-field class="w-100">
+        <input placeholder="check claim" matInput>
+    </mat-form-field>
+
+    <div class="table-responsive">
+    <table class="table">
+        <caption>List of Claims</caption>
+        <thead>
+          <tr>
+            <th scope="col">Claim Id</th>
+            <th scope="col">Value</th>
+            <th scope="col">Status</th>
+            <th scope="col">Is Approved</th>
+            <th scope="col">#</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of claimsData">
+                <td class="tdData" data-toggle="modal" data-target="#exampleModalCenter" (click)="openPopup(data)">{{data.claimId}}</td>
+                <td class="tdData" data-toggle="modal" data-target="#exampleModalCenter" (click)="openPopup(data)">{{data.value}}</td>
+                <td class="tdData" data-toggle="modal" data-target="#exampleModalCenter" (click)="openPopup(data)">{{data.status}}</td>
+                <td class="tdData" data-toggle="modal" data-target="#exampleModalCenter" (click)="openPopup(data)">{{data.isApproved}}</td>
+                <td (click)="deleteClaim()" *ngIf="data.value != ''">
+                  <div class="example-button-container">
+                    <button mat-mini-fab disabled aria-label="Example icon button with a home icon" >
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                </td>
+              </tr>        
+        </tbody>
+      </table>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
+
+
+  
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="form">
+                <div class="row">
+                  <div class="col-12">
+                    <mat-form-field class="w-100">
+                      <mat-label>Claim Id</mat-label>
+                      <input readonly matInput formControlName="claimId" ngDefaultControl>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-12">
+                    <mat-form-field class="w-100">
+                      <mat-label>Value</mat-label>
+                      <input readonly matInput formControlName="value" ngDefaultControl>
+                    </mat-form-field>
+                  </div>   
+                  <div class="col-12">
+                    <mat-form-field class="w-100">
+                      <mat-label>Status</mat-label>
+                      <input matInput formControlName="status" ngDefaultControl>
+                    </mat-form-field>
+                  </div>   
+                  <div class="col-12">
+                    <mat-form-field class="w-100">
+                      <mat-label>Is Approved</mat-label>
+                      <input readonly matInput formControlName="isApproved" ngDefaultControl>
+                    </mat-form-field>
+                  </div>         
+                </div>
+          
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="changeClaimsStatus()" data-dismiss="modal">Change Status</button>
+          <button *ngIf="claimsData[0].isApproved == 'False'" type="button" class="btn btn-primary" (click)="sendForVerification()">Send For Verification</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+
+
+
+<!-- 
+
+    enterprise -> request for verification
+    govt -> verify
+    insurer -> approved
+
+    verification requested 
+    verified
+
+   -->
+
+
+
+
+
+
+
+
+
+   <!DOCTYPE html>
+   <html lang="en">
+   
+   <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+     <title>Your Form</title>
+     <style>
+       body {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         height: 100vh;
+         margin: 0;
+       }
+   
+       .height-adjustment {
+         max-width: 600px;
+         width: 100%;
+         height: 70vh;
+       }
+     </style>
+   </head>
+   
+   <body>
+   
+   
+     <div class="p-4 height-adjustment">
+       <div style="text-align: center;">
+         <h1 class="textColor">Enterprise</h1>
+       </div>
+   
+
+   
+       <div class="table-responsive">
+         <table class="table table-dark">
+           <caption>List of Claims</caption>
+           <thead>
+             <tr>
+               <th scope="col">Claim Id</th>
+               <th scope="col">Value</th>
+               <th scope="col">Status</th>
+               <th scope="col">Edit</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr data-toggle="modal" *ngFor="let data of previousClaims" data-target="#exampleModalCenter" (click)="openDialogue(data)">
+               <td *ngIf="data.status == 'Pending'">{{data.claimId}}</td>
+               <td *ngIf="data.status == 'Pending'">{{data.value}}</td>
+               <td *ngIf="data.status == 'Pending'">{{data.status}}</td>
+   
+               <td *ngIf="data.status == 'Pending'">
+                 <div class="example-button-container">
+                   <button mat-mini-fab aria-label="Example icon button with a home icon">
+                     <mat-icon>delete</mat-icon>
+                   </button>
+                 </div>
+               </td>
+   
+             </tr>
+           </tbody>
+         </table>
+       </div>
+     </div>
+   
+   
+   
+   
+   </body>
+   
+   </html>
+   
+   
+   
+   <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+     <div class="modal-dialog modal-dialog-centered" role="document" >
+       <div class="modal-content">
+         <div class="modal-header">
+           <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+             <span aria-hidden="true">&times;</span>
+           </button>
+         </div>
+         <div class="modal-body">
+           <form [formGroup]="form">
+             <div class="row">
+               <div class="col-12">
+                 <mat-form-field class="w-100">
+                   <mat-label>Claim Id</mat-label>
+                   <input readonly matInput formControlName="claimId" ngDefaultControl>
+                 </mat-form-field>
+               </div>
+               <div class="col-12">
+                 <mat-form-field class="w-100">
+                   <mat-label>Value</mat-label>
+                   <input readonly matInput formControlName="value" ngDefaultControl>
+                 </mat-form-field>
+               </div>
+               <div class="col-12">
+                 <mat-form-field class="w-100">
+                   <mat-label>Status</mat-label>
+                   <input matInput formControlName="status" ngDefaultControl>
+                 </mat-form-field>
+               </div>
+   
+             </div>
+   
+           </form>
+         </div>
+         <div class="modal-footer">
+           <button type="button" class="btn btn-primary"
+           (click)="requestForVerification(selectedClaimId)">Send For Verification</button>
+         </div>
+       </div>
+     </div>
+   </div>
+   
+   
+   
+   

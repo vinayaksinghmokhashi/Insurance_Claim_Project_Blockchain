@@ -1,0 +1,17 @@
+.viewClaims{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+html{
+    height: 100vh;
+    overflow: hidden;
+}
+
+body{
+    background-image: url("src/assets/a.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
