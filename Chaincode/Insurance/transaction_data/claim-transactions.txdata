@@ -1,0 +1,44 @@
+[
+    {
+        "transactionName": "claimExists",
+        "transactionLabel": "A test claimExists transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "createClaim",
+        "transactionLabel": "A test createClaim transaction",
+        "arguments": [
+            "001",
+            "some value"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "readClaim",
+        "transactionLabel": "A test readClaim transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "updateClaim",
+        "transactionLabel": "A test updateClaim transaction",
+        "arguments": [
+            "001",
+            "some other value"
+        ],
+        "transientData": {}
+    },
+    {
+        "transactionName": "deleteClaim",
+        "transactionLabel": "A test deleteClaim transaction",
+        "arguments": [
+            "001"
+        ],
+        "transientData": {}
+    }
+]

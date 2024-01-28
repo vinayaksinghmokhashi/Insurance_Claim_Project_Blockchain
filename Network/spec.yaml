@@ -1,0 +1,34 @@
+fabric:
+############################################################### 
+  # Declaring unique addresses of the Certificate Authorities 
+  # of all organizations.
+  cas:  
+  - "ca1.Insurer.insurance.com"
+  - "ca1.PolicyHolder.insurance.com"
+  - "ca1.GovtAgency.insurance.com"
+  - "ca1.Enterprise.insurance.com"
+############################################################### 
+  # Declaring unique addresses of the peers of organisations. 
+  # There can be multiple peers for each organizations
+  peers: 
+  - "peer1.Insurer.insurance.com"
+  # - "peer2.Insurer.insurance.com"
+  - "peer1.PolicyHolder.insurance.com"
+  # - "peer2.PolicyHolder.insurance.com"
+  - "peer1.GovtAgency.insurance.com"
+  # - "peer2.GovtAgency.insurance.com"
+  - "peer1.Enterprise.insurance.com"
+############################################################### 
+  # Declaring unique addresses of the orderers.
+  orderers:
+  - "orderer1.insurance.com"
+  - "orderer2.insurance.com"
+  - "orderer3.insurance.com"
+############################################################### 
+  settings:
+    ca:
+      FABRIC_LOGGING_SPEC: DEBUG
+    peer:
+      FABRIC_LOGGING_SPEC: DEBUG
+    orderer:
+      FABRIC_LOGGING_SPEC: DEBUG

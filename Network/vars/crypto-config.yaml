@@ -1,0 +1,72 @@
+---
+OrdererOrgs:
+  - Name: insurance.com
+    Domain: insurance.com
+    Specs:
+      - Hostname: orderer1
+        SANS:
+          - 10.64.39.89
+      - Hostname: orderer2
+        SANS:
+          - 10.64.39.89
+      - Hostname: orderer3
+        SANS:
+          - 10.64.39.89
+
+PeerOrgs:
+  - Name: Enterprise.insurance.com
+    Domain: Enterprise.insurance.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.Enterprise.insurance.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer1
+        CommonName: peer1.Enterprise.insurance.com
+        SANS:
+          - 10.64.39.89
+  - Name: GovtAgency.insurance.com
+    Domain: GovtAgency.insurance.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.GovtAgency.insurance.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer1
+        CommonName: peer1.GovtAgency.insurance.com
+        SANS:
+          - 10.64.39.89
+  - Name: Insurer.insurance.com
+    Domain: Insurer.insurance.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.Insurer.insurance.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer1
+        CommonName: peer1.Insurer.insurance.com
+        SANS:
+          - 10.64.39.89
+  - Name: PolicyHolder.insurance.com
+    Domain: PolicyHolder.insurance.com
+    EnableNodeOUs: true
+    CA:
+      Hostname: ca1
+      CommonName: ca1.PolicyHolder.insurance.com
+      Country: US
+      Province: North Carolina
+      Locality: Raleigh
+    Specs:
+      - Hostname: peer1
+        CommonName: peer1.PolicyHolder.insurance.com
+        SANS:
+          - 10.64.39.89

@@ -1,0 +1,439 @@
+---
+# ROOTPATH should be set to the absolute path of crypto material starting directory
+# for example: export ROOTPATH=/home/ubuntu/mywork/vars/keyfiles
+"name": "24c4b5e93c_net"
+"x-type": "hlfv-2.2.2"
+"version": "1.0.0"
+"client":
+  "organization": "PolicyHolder.insurance.com"
+  "cryptoconfig":
+    "path": "${ROOTPATH}"
+  "connection":
+    "timeout":
+      "peer":
+        "endorser": "300"
+        "eventHub": "300"
+        "eventReg": "300"
+      "orderer": "300"
+  "credentialStore":
+    "path": "/tmp/state-store"
+    "cryptoStore":
+      "path": "/tmp/msp"
+  "BCCSP":
+    "security":
+      "enabled": "true"
+      "default":
+        "provider": "SW"
+      "hashAlgorithm": "SHA2"
+      "softVerify": "true"
+      "level": "256"
+
+"channels":
+  "insurancechannel":
+    "orderers":
+    - "orderer1.insurance.com"
+    - "orderer2.insurance.com"
+    - "orderer3.insurance.com"
+    "peers":
+      "peer1.Insurer.insurance.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+      "peer1.PolicyHolder.insurance.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+      "peer1.GovtAgency.insurance.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+      "peer1.Enterprise.insurance.com":
+        "endorsingPeer": true
+        "chaincodeQuery": true
+        "eventSource": true
+
+"organizations":
+  "Enterprise.insurance.com":
+    "mspid": "Enterprise-insurance-com"
+    "cryptoPath": "peerOrganizations/Enterprise.insurance.com/users/{username}@Enterprise.insurance.com/msp"
+    "peers":
+    - "peer1.Enterprise.insurance.com"
+    "certificateAuthorities":
+    - "ca1.Enterprise.insurance.com"
+  "GovtAgency.insurance.com":
+    "mspid": "GovtAgency-insurance-com"
+    "cryptoPath": "peerOrganizations/GovtAgency.insurance.com/users/{username}@GovtAgency.insurance.com/msp"
+    "peers":
+    - "peer1.GovtAgency.insurance.com"
+    "certificateAuthorities":
+    - "ca1.GovtAgency.insurance.com"
+  "insurance.com":
+    "mspid": "insurance-com"
+    "cryptoPath": "ordererOrganizations/insurance.com/users/{username}@insurance.com/msp"
+    "orderers":
+    - "orderer1.insurance.com"
+    - "orderer2.insurance.com"
+    - "orderer3.insurance.com"
+    "certificateAuthorities":
+  "Insurer.insurance.com":
+    "mspid": "Insurer-insurance-com"
+    "cryptoPath": "peerOrganizations/Insurer.insurance.com/users/{username}@Insurer.insurance.com/msp"
+    "peers":
+    - "peer1.Insurer.insurance.com"
+    "certificateAuthorities":
+    - "ca1.Insurer.insurance.com"
+  "PolicyHolder.insurance.com":
+    "mspid": "PolicyHolder-insurance-com"
+    "cryptoPath": "peerOrganizations/PolicyHolder.insurance.com/users/{username}@PolicyHolder.insurance.com/msp"
+    "peers":
+    - "peer1.PolicyHolder.insurance.com"
+    "certificateAuthorities":
+    - "ca1.PolicyHolder.insurance.com"
+
+"orderers":
+  "orderer1.insurance.com":
+    "url": "grpcs://10.64.39.89:7012"
+    "grpcOptions":
+      "ssl-target-name-override": "orderer1.insurance.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIICrzCCAlSgAwIBAgIUQ1YUkOrvHoUQ71ISXg1q6ZoBWfcwCgYIKoZIzj0EAwIw
+        bjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRYwFAYDVQQKDA1pbnN1cmFuY2UuY29tMRwwGgYDVQQDDBN0bHNj
+        YS5pbnN1cmFuY2UuY29tMB4XDTI0MDEyODA0MTQwNVoXDTM0MDEyNTA0MTQwNVow
+        bjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRYwFAYDVQQKDA1pbnN1cmFuY2UuY29tMRwwGgYDVQQDDBN0bHNj
+        YS5pbnN1cmFuY2UuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAETsmfqfOW
+        bSXINQsrGVc13wDFRXQ0r/3pOtxD+d3b9YK9ansPpn42rS6lV1cg1xlPJn9S9kIr
+        AE0yVvaV2CYiraOBzzCBzDAdBgNVHQ4EFgQUM12CW6Zsf0gCHM9uWbgn/o7phLMw
+        HwYDVR0jBBgwFoAUM12CW6Zsf0gCHM9uWbgn/o7phLMwDwYDVR0TAQH/BAUwAwEB
+        /zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMC
+        MEoGA1UdEQRDMEGHBApAJ1mCE3Rsc2NhLmluc3VyYW5jZS5jb22CE3Rsc2NhLWlu
+        c3VyYW5jZS1jb22CCWxvY2FsaG9zdIcEfwAAATAKBggqhkjOPQQDAgNJADBGAiEA
+        suWp+wdXUMEmIdZQXlU4Eu2sWR3kT6dlDEQgeRqXZYsCIQCUntsh2RYbxSQRidn7
+        6yrBZ57ptL/Y93iAVyuFpINI0A==
+        -----END CERTIFICATE-----
+
+  "orderer2.insurance.com":
+    "url": "grpcs://10.64.39.89:7013"
+    "grpcOptions":
+      "ssl-target-name-override": "orderer2.insurance.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIICrzCCAlSgAwIBAgIUQ1YUkOrvHoUQ71ISXg1q6ZoBWfcwCgYIKoZIzj0EAwIw
+        bjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRYwFAYDVQQKDA1pbnN1cmFuY2UuY29tMRwwGgYDVQQDDBN0bHNj
+        YS5pbnN1cmFuY2UuY29tMB4XDTI0MDEyODA0MTQwNVoXDTM0MDEyNTA0MTQwNVow
+        bjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRYwFAYDVQQKDA1pbnN1cmFuY2UuY29tMRwwGgYDVQQDDBN0bHNj
+        YS5pbnN1cmFuY2UuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAETsmfqfOW
+        bSXINQsrGVc13wDFRXQ0r/3pOtxD+d3b9YK9ansPpn42rS6lV1cg1xlPJn9S9kIr
+        AE0yVvaV2CYiraOBzzCBzDAdBgNVHQ4EFgQUM12CW6Zsf0gCHM9uWbgn/o7phLMw
+        HwYDVR0jBBgwFoAUM12CW6Zsf0gCHM9uWbgn/o7phLMwDwYDVR0TAQH/BAUwAwEB
+        /zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMC
+        MEoGA1UdEQRDMEGHBApAJ1mCE3Rsc2NhLmluc3VyYW5jZS5jb22CE3Rsc2NhLWlu
+        c3VyYW5jZS1jb22CCWxvY2FsaG9zdIcEfwAAATAKBggqhkjOPQQDAgNJADBGAiEA
+        suWp+wdXUMEmIdZQXlU4Eu2sWR3kT6dlDEQgeRqXZYsCIQCUntsh2RYbxSQRidn7
+        6yrBZ57ptL/Y93iAVyuFpINI0A==
+        -----END CERTIFICATE-----
+
+  "orderer3.insurance.com":
+    "url": "grpcs://10.64.39.89:7014"
+    "grpcOptions":
+      "ssl-target-name-override": "orderer3.insurance.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIICrzCCAlSgAwIBAgIUQ1YUkOrvHoUQ71ISXg1q6ZoBWfcwCgYIKoZIzj0EAwIw
+        bjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRYwFAYDVQQKDA1pbnN1cmFuY2UuY29tMRwwGgYDVQQDDBN0bHNj
+        YS5pbnN1cmFuY2UuY29tMB4XDTI0MDEyODA0MTQwNVoXDTM0MDEyNTA0MTQwNVow
+        bjELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMRYwFAYDVQQKDA1pbnN1cmFuY2UuY29tMRwwGgYDVQQDDBN0bHNj
+        YS5pbnN1cmFuY2UuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAETsmfqfOW
+        bSXINQsrGVc13wDFRXQ0r/3pOtxD+d3b9YK9ansPpn42rS6lV1cg1xlPJn9S9kIr
+        AE0yVvaV2CYiraOBzzCBzDAdBgNVHQ4EFgQUM12CW6Zsf0gCHM9uWbgn/o7phLMw
+        HwYDVR0jBBgwFoAUM12CW6Zsf0gCHM9uWbgn/o7phLMwDwYDVR0TAQH/BAUwAwEB
+        /zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMC
+        MEoGA1UdEQRDMEGHBApAJ1mCE3Rsc2NhLmluc3VyYW5jZS5jb22CE3Rsc2NhLWlu
+        c3VyYW5jZS1jb22CCWxvY2FsaG9zdIcEfwAAATAKBggqhkjOPQQDAgNJADBGAiEA
+        suWp+wdXUMEmIdZQXlU4Eu2sWR3kT6dlDEQgeRqXZYsCIQCUntsh2RYbxSQRidn7
+        6yrBZ57ptL/Y93iAVyuFpINI0A==
+        -----END CERTIFICATE-----
+
+"peers":
+  "peer1.Insurer.insurance.com":
+    "url": "grpcs://10.64.39.89:7004"
+    "grpcOptions":
+      "ssl-target-name-override": "peer1.Insurer.insurance.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIIC4jCCAoigAwIBAgIUX4Ymf00SYtT37xz32fzt1VXXlT0wCgYIKoZIzj0EAwIw
+        fzELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMR4wHAYDVQQKDBVJbnN1cmVyLmluc3VyYW5jZS5jb20xJTAjBgNV
+        BAMMHHRsc2NhMS5JbnN1cmVyLmluc3VyYW5jZS5jb20wHhcNMjQwMTI4MDQxNDQ3
+        WhcNMzQwMTI1MDQxNDQ3WjB/MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGgg
+        Q2Fyb2xpbmExEDAOBgNVBAcMB1JhbGVpZ2gxHjAcBgNVBAoMFUluc3VyZXIuaW5z
+        dXJhbmNlLmNvbTElMCMGA1UEAwwcdGxzY2ExLkluc3VyZXIuaW5zdXJhbmNlLmNv
+        bTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABHefw0KO5HX7i1jacK2us0MFI5qc
+        yRepyfs6uR9a+u9J8KRlqkJ8O1esWaohJfM88M1n0l/E5Ob3i6xJWstQX5ujgeEw
+        gd4wHQYDVR0OBBYEFNjhSa3+eO/afvPBYusZKz6EieNZMB8GA1UdIwQYMBaAFNjh
+        Sa3+eO/afvPBYusZKz6EieNZMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQD
+        AgGmMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjBcBgNVHREEVTBThwQK
+        QCdZghx0bHNjYTEuSW5zdXJlci5pbnN1cmFuY2UuY29tghx0bHNjYTEtSW5zdXJl
+        ci1pbnN1cmFuY2UtY29tgglsb2NhbGhvc3SHBH8AAAEwCgYIKoZIzj0EAwIDSAAw
+        RQIhAKutYSISVhI2PAMY3WUWazA3B71G00pVtZLuJr+8BxgBAiB8PQ0EW3xSiLEp
+        ce80sIiWTYDmI6U9fTzWGv4B9ADw+g==
+        -----END CERTIFICATE-----
+
+  "peer1.PolicyHolder.insurance.com":
+    "url": "grpcs://10.64.39.89:7005"
+    "grpcOptions":
+      "ssl-target-name-override": "peer1.PolicyHolder.insurance.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIIDAjCCAqigAwIBAgIUVEt+eETT7TIL8DF/m07ywPtxoWYwCgYIKoZIzj0EAwIw
+        gYkxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEQMA4GA1UE
+        BwwHUmFsZWlnaDEjMCEGA1UECgwaUG9saWN5SG9sZGVyLmluc3VyYW5jZS5jb20x
+        KjAoBgNVBAMMIXRsc2NhMS5Qb2xpY3lIb2xkZXIuaW5zdXJhbmNlLmNvbTAeFw0y
+        NDAxMjgwNDE1MTFaFw0zNDAxMjUwNDE1MTFaMIGJMQswCQYDVQQGEwJVUzEXMBUG
+        A1UECAwOTm9ydGggQ2Fyb2xpbmExEDAOBgNVBAcMB1JhbGVpZ2gxIzAhBgNVBAoM
+        GlBvbGljeUhvbGRlci5pbnN1cmFuY2UuY29tMSowKAYDVQQDDCF0bHNjYTEuUG9s
+        aWN5SG9sZGVyLmluc3VyYW5jZS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNC
+        AASkYdDiqyJJKlqEOQ4DXew0cd5GVnaS1ZCabreKdlq2NIXKZsgUt/+lD6g7zmp/
+        3uVCh/6GrfPgI7bg52NqFs2ro4HrMIHoMB0GA1UdDgQWBBSBRl1R0ezWVEEoIrTv
+        OSnFp+a38DAfBgNVHSMEGDAWgBSBRl1R0ezWVEEoIrTvOSnFp+a38DAPBgNVHRMB
+        Af8EBTADAQH/MA4GA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcDAQYI
+        KwYBBQUHAwIwZgYDVR0RBF8wXYcECkAnWYIhdGxzY2ExLlBvbGljeUhvbGRlci5p
+        bnN1cmFuY2UuY29tgiF0bHNjYTEtUG9saWN5SG9sZGVyLWluc3VyYW5jZS1jb22C
+        CWxvY2FsaG9zdIcEfwAAATAKBggqhkjOPQQDAgNIADBFAiAHNTHFHtXq+dshqzF/
+        PDXJQq1Y3q4ezbPozdPlHptxGQIhAP+HDMWM4Of6mMrBi3s2FaIsFDyIEc0QVwJ0
+        GgmHU7jj
+        -----END CERTIFICATE-----
+
+  "peer1.GovtAgency.insurance.com":
+    "url": "grpcs://10.64.39.89:7006"
+    "grpcOptions":
+      "ssl-target-name-override": "peer1.GovtAgency.insurance.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIIC9TCCApygAwIBAgIUDPz014D9VRN2Pv8ZhhF+it8liuEwCgYIKoZIzj0EAwIw
+        gYUxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEQMA4GA1UE
+        BwwHUmFsZWlnaDEhMB8GA1UECgwYR292dEFnZW5jeS5pbnN1cmFuY2UuY29tMSgw
+        JgYDVQQDDB90bHNjYTEuR292dEFnZW5jeS5pbnN1cmFuY2UuY29tMB4XDTI0MDEy
+        ODA0MTM0MFoXDTM0MDEyNTA0MTM0MFowgYUxCzAJBgNVBAYTAlVTMRcwFQYDVQQI
+        DA5Ob3J0aCBDYXJvbGluYTEQMA4GA1UEBwwHUmFsZWlnaDEhMB8GA1UECgwYR292
+        dEFnZW5jeS5pbnN1cmFuY2UuY29tMSgwJgYDVQQDDB90bHNjYTEuR292dEFnZW5j
+        eS5pbnN1cmFuY2UuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEUPhv+DgG
+        4rRK5b6VkXhpdQmKqwL89OpYs0xLrjO20VwWQADcI2CLx5JodxmiN46vS2YU7JsR
+        hgW5BTVSTumy0qOB5zCB5DAdBgNVHQ4EFgQUnpksro5m3gQFy6BZKD+XJdfIekkw
+        HwYDVR0jBBgwFoAUnpksro5m3gQFy6BZKD+XJdfIekkwDwYDVR0TAQH/BAUwAwEB
+        /zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMC
+        MGIGA1UdEQRbMFmHBApAJ1mCH3Rsc2NhMS5Hb3Z0QWdlbmN5Lmluc3VyYW5jZS5j
+        b22CH3Rsc2NhMS1Hb3Z0QWdlbmN5LWluc3VyYW5jZS1jb22CCWxvY2FsaG9zdIcE
+        fwAAATAKBggqhkjOPQQDAgNHADBEAiAw3M/DMM6wDvdz7qKfkWMAmHHr1HLhXH1j
+        CTMhI1FTAQIgH5rYJAYsAMBO60yQ+K98w/VjG04CXx1rK0QanfjWDsY=
+        -----END CERTIFICATE-----
+
+  "peer1.Enterprise.insurance.com":
+    "url": "grpcs://10.64.39.89:7007"
+    "grpcOptions":
+      "ssl-target-name-override": "peer1.Enterprise.insurance.com"
+    "tlsCACerts":
+      "pem": |
+        -----BEGIN CERTIFICATE-----
+        MIIC9zCCApygAwIBAgIUaUuNbeJ8zTdqI8q9vsbIy43KzkAwCgYIKoZIzj0EAwIw
+        gYUxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEQMA4GA1UE
+        BwwHUmFsZWlnaDEhMB8GA1UECgwYRW50ZXJwcmlzZS5pbnN1cmFuY2UuY29tMSgw
+        JgYDVQQDDB90bHNjYTEuRW50ZXJwcmlzZS5pbnN1cmFuY2UuY29tMB4XDTI0MDEy
+        ODA0MTMxNloXDTM0MDEyNTA0MTMxNlowgYUxCzAJBgNVBAYTAlVTMRcwFQYDVQQI
+        DA5Ob3J0aCBDYXJvbGluYTEQMA4GA1UEBwwHUmFsZWlnaDEhMB8GA1UECgwYRW50
+        ZXJwcmlzZS5pbnN1cmFuY2UuY29tMSgwJgYDVQQDDB90bHNjYTEuRW50ZXJwcmlz
+        ZS5pbnN1cmFuY2UuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEfoD5r+Ql
+        1RZ4D6lheCmZ7dmzgre5ZOSqR+LkAIHyG5CEm+3EDdMgNRFSvN/rf2DriKKyrSb6
+        54df2I/mWyc8QaOB5zCB5DAdBgNVHQ4EFgQU51aJfWQtA/WnrdTZbS9t+3kQt9ow
+        HwYDVR0jBBgwFoAU51aJfWQtA/WnrdTZbS9t+3kQt9owDwYDVR0TAQH/BAUwAwEB
+        /zAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMC
+        MGIGA1UdEQRbMFmHBApAJ1mCH3Rsc2NhMS5FbnRlcnByaXNlLmluc3VyYW5jZS5j
+        b22CH3Rsc2NhMS1FbnRlcnByaXNlLWluc3VyYW5jZS1jb22CCWxvY2FsaG9zdIcE
+        fwAAATAKBggqhkjOPQQDAgNJADBGAiEAqJu7R0Lt+653Tjb6Y+oWSNb2czwXFUOG
+        pJKKoYdVynoCIQC1C8sY7k/3Ktu82FVplWhAGRfo0MRhpy1fNBS2kLY/dQ==
+        -----END CERTIFICATE-----
+
+"certificateAuthorities":
+  "ca1.Insurer.insurance.com":
+    "url": "https://10.64.39.89:7000"
+    "tlsCACerts":
+      "pem":
+      - |
+        -----BEGIN CERTIFICATE-----
+        MIIC1jCCAnygAwIBAgIUR85j29u2XrvmWKxSj6sSflKOQWUwCgYIKoZIzj0EAwIw
+        fDELMAkGA1UEBhMCVVMxFzAVBgNVBAgMDk5vcnRoIENhcm9saW5hMRAwDgYDVQQH
+        DAdSYWxlaWdoMR4wHAYDVQQKDBVJbnN1cmVyLmluc3VyYW5jZS5jb20xIjAgBgNV
+        BAMMGWNhMS5JbnN1cmVyLmluc3VyYW5jZS5jb20wHhcNMjQwMTI4MDQxNDQ2WhcN
+        MzQwMTI1MDQxNDQ2WjB8MQswCQYDVQQGEwJVUzEXMBUGA1UECAwOTm9ydGggQ2Fy
+        b2xpbmExEDAOBgNVBAcMB1JhbGVpZ2gxHjAcBgNVBAoMFUluc3VyZXIuaW5zdXJh
+        bmNlLmNvbTEiMCAGA1UEAwwZY2ExLkluc3VyZXIuaW5zdXJhbmNlLmNvbTBZMBMG
+        ByqGSM49AgEGCCqGSM49AwEHA0IABGt5VnE4q5IEaN2lEbURDSdZRMVpe+ia6dyt
+        N6XZZau4Y38EaABXYBBDFgec3L4GxxLpNtprcjIjIxtKHr7UyAqjgdswgdgwHQYD
+        VR0OBBYEFFRpkRa48qWFfEuRS9fzIFO6zhckMB8GA1UdIwQYMBaAFFRpkRa48qWF
+        fEuRS9fzIFO6zhckMA8GA1UdEwEB/wQFMAMBAf8wDgYDVR0PAQH/BAQDAgGmMB0G
+        A1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjBWBgNVHREETzBNhwQKQCdZghlj
+        YTEuSW5zdXJlci5pbnN1cmFuY2UuY29tghljYTEtSW5zdXJlci1pbnN1cmFuY2Ut
+        Y29tgglsb2NhbGhvc3SHBH8AAAEwCgYIKoZIzj0EAwIDSAAwRQIgG+8JFLmQomTY
+        +iWri/j9CVXdU2lJm1kV4DtdZJohC7ACIQCJiypVIqmsfo7RV1Tk/5fgoKxULxhr
+        5MjdW+oGVQn+xQ==
+        -----END CERTIFICATE-----
+
+    "httpOptions":
+      "verify": "false"
+    "caName": "ca1"
+    "registrar":
+      "enrollId": "admin"
+      "enrollSecret": "adminpw"
+  "ca1.PolicyHolder.insurance.com":
+    "url": "https://10.64.39.89:7001"
+    "tlsCACerts":
+      "pem":
+      - |
+        -----BEGIN CERTIFICATE-----
+        MIIC9zCCApygAwIBAgIUepq29DJnkLYsDs9JtIje2nxpODEwCgYIKoZIzj0EAwIw
+        gYYxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEQMA4GA1UE
+        BwwHUmFsZWlnaDEjMCEGA1UECgwaUG9saWN5SG9sZGVyLmluc3VyYW5jZS5jb20x
+        JzAlBgNVBAMMHmNhMS5Qb2xpY3lIb2xkZXIuaW5zdXJhbmNlLmNvbTAeFw0yNDAx
+        MjgwNDE1MTBaFw0zNDAxMjUwNDE1MTBaMIGGMQswCQYDVQQGEwJVUzEXMBUGA1UE
+        CAwOTm9ydGggQ2Fyb2xpbmExEDAOBgNVBAcMB1JhbGVpZ2gxIzAhBgNVBAoMGlBv
+        bGljeUhvbGRlci5pbnN1cmFuY2UuY29tMScwJQYDVQQDDB5jYTEuUG9saWN5SG9s
+        ZGVyLmluc3VyYW5jZS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATyjl2P
+        U/EVlb5dAdsXYNmEYSaDOAyLWBRD39e388gkN7cwWa1eclu7Qq102jYZ9OMlU7Zb
+        24V/8Kd43s/PUBj7o4HlMIHiMB0GA1UdDgQWBBTXKaoJt98ra43CrHhJ3DY/EN1x
+        7zAfBgNVHSMEGDAWgBTXKaoJt98ra43CrHhJ3DY/EN1x7zAPBgNVHRMBAf8EBTAD
+        AQH/MA4GA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUH
+        AwIwYAYDVR0RBFkwV4cECkAnWYIeY2ExLlBvbGljeUhvbGRlci5pbnN1cmFuY2Uu
+        Y29tgh5jYTEtUG9saWN5SG9sZGVyLWluc3VyYW5jZS1jb22CCWxvY2FsaG9zdIcE
+        fwAAATAKBggqhkjOPQQDAgNJADBGAiEAjOWT0f1KmoqMCo/KnRGRb1ZjtjqfcFor
+        T7KedATP1YsCIQCLmepRUF2Hx1FhCfA9wgU/vu55j/lXm/VOdeJlrrPKCg==
+        -----END CERTIFICATE-----
+
+    "httpOptions":
+      "verify": "false"
+    "caName": "ca1"
+    "registrar":
+      "enrollId": "admin"
+      "enrollSecret": "adminpw"
+  "ca1.GovtAgency.insurance.com":
+    "url": "https://10.64.39.89:7002"
+    "tlsCACerts":
+      "pem":
+      - |
+        -----BEGIN CERTIFICATE-----
+        MIIC6jCCApCgAwIBAgIUZEf7x7goa5upc+bn3ac9JzYb3vUwCgYIKoZIzj0EAwIw
+        gYIxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEQMA4GA1UE
+        BwwHUmFsZWlnaDEhMB8GA1UECgwYR292dEFnZW5jeS5pbnN1cmFuY2UuY29tMSUw
+        IwYDVQQDDBxjYTEuR292dEFnZW5jeS5pbnN1cmFuY2UuY29tMB4XDTI0MDEyODA0
+        MTM0MFoXDTM0MDEyNTA0MTM0MFowgYIxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5O
+        b3J0aCBDYXJvbGluYTEQMA4GA1UEBwwHUmFsZWlnaDEhMB8GA1UECgwYR292dEFn
+        ZW5jeS5pbnN1cmFuY2UuY29tMSUwIwYDVQQDDBxjYTEuR292dEFnZW5jeS5pbnN1
+        cmFuY2UuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEznxqbu9QiJ329IM0
+        R5u3rD5j7M4s+neLHGeEGfZcmOFjQxCYBSzULc8bLVEdgH7o7sIlwU3uzAMK752t
+        wBzh9aOB4TCB3jAdBgNVHQ4EFgQU2Jw5q0MBJfG7oinIsKKUKlgMEeEwHwYDVR0j
+        BBgwFoAU2Jw5q0MBJfG7oinIsKKUKlgMEeEwDwYDVR0TAQH/BAUwAwEB/zAOBgNV
+        HQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMFwGA1Ud
+        EQRVMFOHBApAJ1mCHGNhMS5Hb3Z0QWdlbmN5Lmluc3VyYW5jZS5jb22CHGNhMS1H
+        b3Z0QWdlbmN5LWluc3VyYW5jZS1jb22CCWxvY2FsaG9zdIcEfwAAATAKBggqhkjO
+        PQQDAgNIADBFAiEA21FYuCLfpkUph/71ijWizkSYucvx5nvUElAzmExyyRsCIHDe
+        2YuWyhA/75MLlPqSFkkCgpVr0T9+VydO+Q2TvByC
+        -----END CERTIFICATE-----
+
+    "httpOptions":
+      "verify": "false"
+    "caName": "ca1"
+    "registrar":
+      "enrollId": "admin"
+      "enrollSecret": "adminpw"
+  "ca1.Enterprise.insurance.com":
+    "url": "https://10.64.39.89:7003"
+    "tlsCACerts":
+      "pem":
+      - |
+        -----BEGIN CERTIFICATE-----
+        MIIC6jCCApCgAwIBAgIUBJsYil0RW2TwOnwiGMZGvMKRDLgwCgYIKoZIzj0EAwIw
+        gYIxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5Ob3J0aCBDYXJvbGluYTEQMA4GA1UE
+        BwwHUmFsZWlnaDEhMB8GA1UECgwYRW50ZXJwcmlzZS5pbnN1cmFuY2UuY29tMSUw
+        IwYDVQQDDBxjYTEuRW50ZXJwcmlzZS5pbnN1cmFuY2UuY29tMB4XDTI0MDEyODA0
+        MTMxNloXDTM0MDEyNTA0MTMxNlowgYIxCzAJBgNVBAYTAlVTMRcwFQYDVQQIDA5O
+        b3J0aCBDYXJvbGluYTEQMA4GA1UEBwwHUmFsZWlnaDEhMB8GA1UECgwYRW50ZXJw
+        cmlzZS5pbnN1cmFuY2UuY29tMSUwIwYDVQQDDBxjYTEuRW50ZXJwcmlzZS5pbnN1
+        cmFuY2UuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEA6dHurRgNdi4sxCJ
+        eqFkC6lhBKRTrvztjRBy1h/DV0GTQw8M9PgvYS95oTzQDszoHonbGRjStrs3oxik
+        0Sl0hqOB4TCB3jAdBgNVHQ4EFgQUT1vkoms4hc0+c6QnDMnpV2/n/BowHwYDVR0j
+        BBgwFoAUT1vkoms4hc0+c6QnDMnpV2/n/BowDwYDVR0TAQH/BAUwAwEB/zAOBgNV
+        HQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMFwGA1Ud
+        EQRVMFOHBApAJ1mCHGNhMS5FbnRlcnByaXNlLmluc3VyYW5jZS5jb22CHGNhMS1F
+        bnRlcnByaXNlLWluc3VyYW5jZS1jb22CCWxvY2FsaG9zdIcEfwAAATAKBggqhkjO
+        PQQDAgNIADBFAiEA/tLTjSSGcATZWzhSNpLpr81HXHbnD76UYqEmnTN86T4CIDiZ
+        kBxEdPkOWgcPeVZY0XXKS2iobFoKRitTrBA9GFtu
+        -----END CERTIFICATE-----
+
+    "httpOptions":
+      "verify": "false"
+    "caName": "ca1"
+    "registrar":
+      "enrollId": "admin"
+      "enrollSecret": "adminpw"
+
+"entityMatchers":
+  "orderer":
+  - "mappedHost": "orderer1.insurance.com"
+    "pattern": "(\\w*)orderer1.insurance.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "orderer1.insurance.com"
+    "urlSubstitutionExp": "10.64.39.89:7012"
+  - "mappedHost": "orderer2.insurance.com"
+    "pattern": "(\\w*)orderer2.insurance.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "orderer2.insurance.com"
+    "urlSubstitutionExp": "10.64.39.89:7013"
+  - "mappedHost": "orderer3.insurance.com"
+    "pattern": "(\\w*)orderer3.insurance.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "orderer3.insurance.com"
+    "urlSubstitutionExp": "10.64.39.89:7014"
+  
+  "peer":
+  - "mappedHost": "peer1.Insurer.insurance.com"
+    "pattern": "(\\w*)peer1.Insurer.insurance.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer1.Insurer.insurance.com"
+    "urlSubstitutionExp": "10.64.39.89:7004"
+  - "mappedHost": "peer1.PolicyHolder.insurance.com"
+    "pattern": "(\\w*)peer1.PolicyHolder.insurance.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer1.PolicyHolder.insurance.com"
+    "urlSubstitutionExp": "10.64.39.89:7005"
+  - "mappedHost": "peer1.GovtAgency.insurance.com"
+    "pattern": "(\\w*)peer1.GovtAgency.insurance.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer1.GovtAgency.insurance.com"
+    "urlSubstitutionExp": "10.64.39.89:7006"
+  - "mappedHost": "peer1.Enterprise.insurance.com"
+    "pattern": "(\\w*)peer1.Enterprise.insurance.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "peer1.Enterprise.insurance.com"
+    "urlSubstitutionExp": "10.64.39.89:7007"
+  
+  "certificateAuthorities":
+  - "mappedHost": "ca1.Insurer.insurance.com"
+    "pattern": "(\\w*)ca1.Insurer.insurance.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "ca1.Insurer.insurance.com"
+    "urlSubstitutionExp": "10.64.39.89:7000"
+  - "mappedHost": "ca1.PolicyHolder.insurance.com"
+    "pattern": "(\\w*)ca1.PolicyHolder.insurance.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "ca1.PolicyHolder.insurance.com"
+    "urlSubstitutionExp": "10.64.39.89:7001"
+  - "mappedHost": "ca1.GovtAgency.insurance.com"
+    "pattern": "(\\w*)ca1.GovtAgency.insurance.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "ca1.GovtAgency.insurance.com"
+    "urlSubstitutionExp": "10.64.39.89:7002"
+  - "mappedHost": "ca1.Enterprise.insurance.com"
+    "pattern": "(\\w*)ca1.Enterprise.insurance.com(\\w*)"
+    "sslTargetOverrideUrlSubstitutionExp": "ca1.Enterprise.insurance.com"
+    "urlSubstitutionExp": "10.64.39.89:7003"

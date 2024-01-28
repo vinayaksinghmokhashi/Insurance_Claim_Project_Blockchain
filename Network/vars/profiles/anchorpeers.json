@@ -1,0 +1,46 @@
+{
+  "Enterprise-insurance-com": {
+    "AnchorPeers": {
+      "mod_policy": "Admins",
+      "value": {
+        "anchor_peers": [
+           { "host": "10.64.39.89", "port": "7007" }
+        ]
+      },
+      "version": "0"
+    }
+  },
+  "GovtAgency-insurance-com": {
+    "AnchorPeers": {
+      "mod_policy": "Admins",
+      "value": {
+        "anchor_peers": [
+           { "host": "10.64.39.89", "port": "7006" }
+        ]
+      },
+      "version": "0"
+    }
+  },
+  "Insurer-insurance-com": {
+    "AnchorPeers": {
+      "mod_policy": "Admins",
+      "value": {
+        "anchor_peers": [
+           { "host": "10.64.39.89", "port": "7004" }
+        ]
+      },
+      "version": "0"
+    }
+  },
+  "PolicyHolder-insurance-com": {
+    "AnchorPeers": {
+      "mod_policy": "Admins",
+      "value": {
+        "anchor_peers": [
+           { "host": "10.64.39.89", "port": "7005" }
+        ]
+      },
+      "version": "0"
+    }
+  }
+}

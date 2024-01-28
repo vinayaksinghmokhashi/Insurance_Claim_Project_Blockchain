@@ -1,0 +1,226 @@
+---
+Organizations:
+  - &Enterprise-insurance-com
+      Name: Enterprise-insurance-com
+      ID: Enterprise-insurance-com
+      MSPDir: keyfiles/peerOrganizations/Enterprise.insurance.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('Enterprise-insurance-com.admin', 'Enterprise-insurance-com.peer', 'Enterprise-insurance-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('Enterprise-insurance-com.admin', 'Enterprise-insurance-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('Enterprise-insurance-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('Enterprise-insurance-com.peer')"
+
+      AnchorPeers:
+      - Host: 10.64.39.89
+        Port: 7007
+  - &GovtAgency-insurance-com
+      Name: GovtAgency-insurance-com
+      ID: GovtAgency-insurance-com
+      MSPDir: keyfiles/peerOrganizations/GovtAgency.insurance.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('GovtAgency-insurance-com.admin', 'GovtAgency-insurance-com.peer', 'GovtAgency-insurance-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('GovtAgency-insurance-com.admin', 'GovtAgency-insurance-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('GovtAgency-insurance-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('GovtAgency-insurance-com.peer')"
+
+      AnchorPeers:
+      - Host: 10.64.39.89
+        Port: 7006
+  - &insurance-com
+      Name: insurance-com
+      ID: insurance-com
+      MSPDir: keyfiles/ordererOrganizations/insurance.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('insurance-com.member')"
+        Writers:
+          Type: Signature
+          Rule: "OR('insurance-com.member')"
+        Admins:
+          Type: Signature
+          Rule: "OR('insurance-com.admin')"
+  - &Insurer-insurance-com
+      Name: Insurer-insurance-com
+      ID: Insurer-insurance-com
+      MSPDir: keyfiles/peerOrganizations/Insurer.insurance.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('Insurer-insurance-com.admin', 'Insurer-insurance-com.peer', 'Insurer-insurance-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('Insurer-insurance-com.admin', 'Insurer-insurance-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('Insurer-insurance-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('Insurer-insurance-com.peer')"
+
+      AnchorPeers:
+      - Host: 10.64.39.89
+        Port: 7004
+  - &PolicyHolder-insurance-com
+      Name: PolicyHolder-insurance-com
+      ID: PolicyHolder-insurance-com
+      MSPDir: keyfiles/peerOrganizations/PolicyHolder.insurance.com/msp
+      Policies:
+        Readers:
+          Type: Signature
+          Rule: "OR('PolicyHolder-insurance-com.admin', 'PolicyHolder-insurance-com.peer', 'PolicyHolder-insurance-com.client')"
+        Writers:
+          Type: Signature
+          Rule: "OR('PolicyHolder-insurance-com.admin', 'PolicyHolder-insurance-com.client')"
+        Admins:
+          Type: Signature
+          Rule: "OR('PolicyHolder-insurance-com.admin')"
+        Endorsement:
+          Type: Signature
+          Rule: "OR('PolicyHolder-insurance-com.peer')"
+
+      AnchorPeers:
+      - Host: 10.64.39.89
+        Port: 7005
+
+Capabilities:
+  Channel: &ChannelCapabilities
+    V2_0: true
+
+  Orderer: &OrdererCapabilities
+    V2_0: true
+
+  Application: &ApplicationCapabilities
+    V2_0: true
+
+Application: &ApplicationDefaults
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    LifecycleEndorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+    Endorsement:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Endorsement"
+
+  Capabilities:
+    <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+  OrdererType: etcdraft
+
+  BatchTimeout: 2s
+
+  BatchSize:
+    MaxMessageCount: 10
+    AbsoluteMaxBytes: 99 MB
+    PreferredMaxBytes: 512 KB
+
+  Addresses:
+  - 10.64.39.89:7012
+  - 10.64.39.89:7013
+  - 10.64.39.89:7014
+  EtcdRaft:
+    Consenters:
+    - Host: 10.64.39.89
+      Port: 7012
+      ClientTLSCert: keyfiles/ordererOrganizations/insurance.com/orderers/orderer1.insurance.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/insurance.com/orderers/orderer1.insurance.com/tls/server.crt
+    - Host: 10.64.39.89
+      Port: 7013
+      ClientTLSCert: keyfiles/ordererOrganizations/insurance.com/orderers/orderer2.insurance.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/insurance.com/orderers/orderer2.insurance.com/tls/server.crt
+    - Host: 10.64.39.89
+      Port: 7014
+      ClientTLSCert: keyfiles/ordererOrganizations/insurance.com/orderers/orderer3.insurance.com/tls/server.crt
+      ServerTLSCert: keyfiles/ordererOrganizations/insurance.com/orderers/orderer3.insurance.com/tls/server.crt
+  Organizations:
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+    BlockValidation:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+  Policies:
+    Readers:
+      Type: ImplicitMeta
+      Rule: "ANY Readers"
+    Writers:
+      Type: ImplicitMeta
+      Rule: "ANY Writers"
+    Admins:
+      Type: ImplicitMeta
+      Rule: "MAJORITY Admins"
+
+  Capabilities:
+    <<: *ChannelCapabilities
+
+Profiles:
+  OrgChannel:
+    Consortium: SampleConsortium
+    <<: *ChannelDefaults
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - *Enterprise-insurance-com
+      - *GovtAgency-insurance-com
+      - *Insurer-insurance-com
+      - *PolicyHolder-insurance-com
+      Capabilities:
+        <<: *ApplicationCapabilities
+
+  OrdererGenesis:
+    <<: *ChannelDefaults
+    Capabilities:
+      <<: *ChannelCapabilities
+    Orderer:
+      <<: *OrdererDefaults
+      Organizations:
+      - *insurance-com
+      Capabilities:
+        <<: *OrdererCapabilities
+    Application:
+      <<: *ApplicationDefaults
+      Organizations:
+      - <<: *insurance-com
+    Consortiums:
+      SampleConsortium:
+        Organizations:
+        - *Enterprise-insurance-com
+        - *GovtAgency-insurance-com
+        - *Insurer-insurance-com
+        - *PolicyHolder-insurance-com

@@ -1,0 +1,156 @@
+{
+  "Admin@Enterprise.insurance.com": {
+    "key": "Admin@Enterprise.insurance.com",
+    "org": "Enterprise.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/Enterprise.insurance.com/users/Admin@Enterprise.insurance.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/Enterprise.insurance.com/users/Admin@Enterprise.insurance.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "Admin@GovtAgency.insurance.com": {
+    "key": "Admin@GovtAgency.insurance.com",
+    "org": "GovtAgency.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/GovtAgency.insurance.com/users/Admin@GovtAgency.insurance.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/GovtAgency.insurance.com/users/Admin@GovtAgency.insurance.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "Admin@Insurer.insurance.com": {
+    "key": "Admin@Insurer.insurance.com",
+    "org": "Insurer.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/Insurer.insurance.com/users/Admin@Insurer.insurance.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/Insurer.insurance.com/users/Admin@Insurer.insurance.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "Admin@PolicyHolder.insurance.com": {
+    "key": "Admin@PolicyHolder.insurance.com",
+    "org": "PolicyHolder.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/PolicyHolder.insurance.com/users/Admin@PolicyHolder.insurance.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/PolicyHolder.insurance.com/users/Admin@PolicyHolder.insurance.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "Admin@insurance.com": {
+    "key": "Admin@insurance.com",
+    "org": "insurance.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/insurance.com/users/Admin@insurance.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/insurance.com/users/Admin@insurance.com/msp/keystore/priv_sk",
+    "type": "users"
+  },
+  "Enterprise.insurance.com": {
+    "key": "Enterprise.insurance.com",
+    "org": "Enterprise.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/Enterprise.insurance.com/ca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/Enterprise.insurance.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "Enterprise.insurance.com.tlsca": {
+    "key": "Enterprise.insurance.com",
+    "org": "Enterprise.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/Enterprise.insurance.com/tlsca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/Enterprise.insurance.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "GovtAgency.insurance.com": {
+    "key": "GovtAgency.insurance.com",
+    "org": "GovtAgency.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/GovtAgency.insurance.com/ca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/GovtAgency.insurance.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "GovtAgency.insurance.com.tlsca": {
+    "key": "GovtAgency.insurance.com",
+    "org": "GovtAgency.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/GovtAgency.insurance.com/tlsca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/GovtAgency.insurance.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "Insurer.insurance.com": {
+    "key": "Insurer.insurance.com",
+    "org": "Insurer.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/Insurer.insurance.com/ca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/Insurer.insurance.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "Insurer.insurance.com.tlsca": {
+    "key": "Insurer.insurance.com",
+    "org": "Insurer.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/Insurer.insurance.com/tlsca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/Insurer.insurance.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "PolicyHolder.insurance.com": {
+    "key": "PolicyHolder.insurance.com",
+    "org": "PolicyHolder.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/PolicyHolder.insurance.com/ca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/PolicyHolder.insurance.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "PolicyHolder.insurance.com.tlsca": {
+    "key": "PolicyHolder.insurance.com",
+    "org": "PolicyHolder.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/PolicyHolder.insurance.com/tlsca/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/PolicyHolder.insurance.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "insurance.com": {
+    "key": "insurance.com",
+    "org": "insurance.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/insurance.com/ca/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/insurance.com/ca/priv_sk",
+    "type": "ca"
+  },
+  "insurance.com.tlsca": {
+    "key": "insurance.com",
+    "org": "insurance.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/insurance.com/tlsca/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/insurance.com/tlsca/priv_sk",
+    "type": "tlsca"
+  },
+  "orderer1.insurance.com": {
+    "key": "orderer1.insurance.com",
+    "org": "insurance.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/insurance.com/orderers/orderer1.insurance.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/insurance.com/orderers/orderer1.insurance.com/msp/keystore/priv_sk",
+    "type": "orderers"
+  },
+  "orderer2.insurance.com": {
+    "key": "orderer2.insurance.com",
+    "org": "insurance.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/insurance.com/orderers/orderer2.insurance.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/insurance.com/orderers/orderer2.insurance.com/msp/keystore/priv_sk",
+    "type": "orderers"
+  },
+  "orderer3.insurance.com": {
+    "key": "orderer3.insurance.com",
+    "org": "insurance.com",
+    "path": "/home/vars/keyfiles/ordererOrganizations/insurance.com/orderers/orderer3.insurance.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/ordererOrganizations/insurance.com/orderers/orderer3.insurance.com/msp/keystore/priv_sk",
+    "type": "orderers"
+  },
+  "peer1.Enterprise.insurance.com": {
+    "key": "peer1.Enterprise.insurance.com",
+    "org": "Enterprise.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/Enterprise.insurance.com/peers/peer1.Enterprise.insurance.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/Enterprise.insurance.com/peers/peer1.Enterprise.insurance.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer1.GovtAgency.insurance.com": {
+    "key": "peer1.GovtAgency.insurance.com",
+    "org": "GovtAgency.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/GovtAgency.insurance.com/peers/peer1.GovtAgency.insurance.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/GovtAgency.insurance.com/peers/peer1.GovtAgency.insurance.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer1.Insurer.insurance.com": {
+    "key": "peer1.Insurer.insurance.com",
+    "org": "Insurer.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/Insurer.insurance.com/peers/peer1.Insurer.insurance.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/Insurer.insurance.com/peers/peer1.Insurer.insurance.com/msp/keystore/priv_sk",
+    "type": "peers"
+  },
+  "peer1.PolicyHolder.insurance.com": {
+    "key": "peer1.PolicyHolder.insurance.com",
+    "org": "PolicyHolder.insurance.com",
+    "path": "/home/vars/keyfiles/peerOrganizations/PolicyHolder.insurance.com/peers/peer1.PolicyHolder.insurance.com/msp/keystore/priv_sk",
+    "pkey": "keyfiles/peerOrganizations/PolicyHolder.insurance.com/peers/peer1.PolicyHolder.insurance.com/msp/keystore/priv_sk",
+    "type": "peers"
+  }
+}

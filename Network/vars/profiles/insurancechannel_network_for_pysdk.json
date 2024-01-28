@@ -1,0 +1,191 @@
+{
+  "name": "fabric-network",
+  "description": "Generated network configuration file",
+  "version": "0.1",
+  "client": {
+    "organization": "GovtAgency.insurance.com",
+    "credentialStore": {
+      "path": "/tmp/hfc-kvs",
+      "cryptoStore": {
+        "path": "/tmp/hfc-cvs"
+      },
+      "wallet": "wallet-name"
+    }
+  },
+  "organizations": {
+    "Enterprise.insurance.com": {
+      "mspid": "Enterprise-insurance-com",
+      "peers": [
+        "peer1.Enterprise.insurance.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/Enterprise.insurance.com/users/Admin@Enterprise.insurance.com/msp/signcerts/Admin@Enterprise.insurance.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/Enterprise.insurance.com/users/Admin@Enterprise.insurance.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "GovtAgency.insurance.com": {
+      "mspid": "GovtAgency-insurance-com",
+      "peers": [
+        "peer1.GovtAgency.insurance.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/GovtAgency.insurance.com/users/Admin@GovtAgency.insurance.com/msp/signcerts/Admin@GovtAgency.insurance.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/GovtAgency.insurance.com/users/Admin@GovtAgency.insurance.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "insurance.com": {
+      "mspid": "insurance-com",
+      "orderers": [
+        "orderer1.insurance.com",
+        "orderer2.insurance.com",
+        "orderer3.insurance.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/ordererOrganizations/insurance.com/users/Admin@insurance.com/msp/signcerts/Admin@insurance.com-cert.pem",
+          "private_key": "/keyfiles/ordererOrganizations/insurance.com/users/Admin@insurance.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "Insurer.insurance.com": {
+      "mspid": "Insurer-insurance-com",
+      "peers": [
+        "peer1.Insurer.insurance.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/Insurer.insurance.com/users/Admin@Insurer.insurance.com/msp/signcerts/Admin@Insurer.insurance.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/Insurer.insurance.com/users/Admin@Insurer.insurance.com/msp/keystore/priv_sk"
+        }
+      }
+    },
+    "PolicyHolder.insurance.com": {
+      "mspid": "PolicyHolder-insurance-com",
+      "peers": [
+        "peer1.PolicyHolder.insurance.com"
+      ],
+      "users": {
+        "Admin": {
+          "cert": "/keyfiles/peerOrganizations/PolicyHolder.insurance.com/users/Admin@PolicyHolder.insurance.com/msp/signcerts/Admin@PolicyHolder.insurance.com-cert.pem",
+          "private_key": "/keyfiles/peerOrganizations/PolicyHolder.insurance.com/users/Admin@PolicyHolder.insurance.com/msp/keystore/priv_sk"
+        }
+      }
+    }
+  },
+  "orderers": {
+    "orderer1.insurance.com": {
+      "url": "10.64.39.89:7012",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "orderer1.insurance.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/ordererOrganizations/insurance.com/orderers/orderer1.insurance.com/tls/ca.crt"
+      }
+    },
+    "orderer2.insurance.com": {
+      "url": "10.64.39.89:7013",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "orderer2.insurance.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/ordererOrganizations/insurance.com/orderers/orderer2.insurance.com/tls/ca.crt"
+      }
+    },
+    "orderer3.insurance.com": {
+      "url": "10.64.39.89:7014",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "orderer3.insurance.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/ordererOrganizations/insurance.com/orderers/orderer3.insurance.com/tls/ca.crt"
+      }
+    }
+  },
+  "peers": {
+    "peer1.Insurer.insurance.com": {
+      "url": "10.64.39.89:7004",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer1.Insurer.insurance.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/Insurer.insurance.com/peers/peer1.Insurer.insurance.com/tls/ca.crt"
+      }
+    },
+    "peer1.PolicyHolder.insurance.com": {
+      "url": "10.64.39.89:7005",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer1.PolicyHolder.insurance.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/PolicyHolder.insurance.com/peers/peer1.PolicyHolder.insurance.com/tls/ca.crt"
+      }
+    },
+    "peer1.GovtAgency.insurance.com": {
+      "url": "10.64.39.89:7006",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer1.GovtAgency.insurance.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/GovtAgency.insurance.com/peers/peer1.GovtAgency.insurance.com/tls/ca.crt"
+      }
+    },
+    "peer1.Enterprise.insurance.com": {
+      "url": "10.64.39.89:7007",
+      "grpcOptions": {
+        "grpc.ssl_target_name_override": "peer1.Enterprise.insurance.com",
+        "grpc-max-send-message-length": 15
+      },
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/Enterprise.insurance.com/peers/peer1.Enterprise.insurance.com/tls/ca.crt"
+      }
+    }
+  },
+  "certificateAuthorities": {
+    "ca1.Insurer.insurance.com": {
+      "url": "https://10.64.39.89:7000",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/Insurer.insurance.com/ca/ca1.Insurer.insurance.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "adminpw" }
+    },
+    "ca1.PolicyHolder.insurance.com": {
+      "url": "https://10.64.39.89:7001",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/PolicyHolder.insurance.com/ca/ca1.PolicyHolder.insurance.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "adminpw" }
+    },
+    "ca1.GovtAgency.insurance.com": {
+      "url": "https://10.64.39.89:7002",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/GovtAgency.insurance.com/ca/ca1.GovtAgency.insurance.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "adminpw" }
+    },
+    "ca1.Enterprise.insurance.com": {
+      "url": "https://10.64.39.89:7003",
+      "tlsCACerts": {
+        "path": "/keyfiles/peerOrganizations/Enterprise.insurance.com/ca/ca1.Enterprise.insurance.com-cert.pem"
+      },
+      "httpOptions": { "verify": "false" },
+      "caName": "ca1",
+      "registrar": { "enrollId": "admin", "enrollSecret": "adminpw" }
+    }
+  }
+}
